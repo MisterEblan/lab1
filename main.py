@@ -1,34 +1,18 @@
 from math import sin, cos
 
-eps: float = 1e-3
+eps: float = 1e-2
 
-def f(x: float) -> float:
-    """
-    Вычисляет значение выражения
-    $$ \\frac{(\\sin(x) + \\cos (2x) )^2}{\\sin(2x)} $$
+def main():
+    x = float(input("Ввод >> "))
+    if abs(denominator := sin(2 * x)) < eps:
+        raise ZeroDivisionError
 
-    Область определения:
-        Вся вещественная прямая, кроме точек
-        $\\frac{\\pi n}{2}, n \\in \\mathbb{N}$.
+    enumerator = ( sin(x) + cos(x * 2) )**2
 
-    Args:
-        x: значение аргумента.
+    f_x = enumerator / denominator
 
-    Returns:
-        Вычисленное значение.
-
-    Raises:
-        ZeroDivisionError: если подать значение не из области определения.
-    """
-
-    if abs(sin(2 * x)) < eps:
-        raise ZeroDivisionError()
-
-    return (sin(x) + cos(2 * x))**2 / (sin(2 * x))
+    print(f"x={x}")
+    print(f"f={f_x:.6}")
 
 if __name__ == "__main__":
-    x = float(input("Ввод >>> "))
-    print(f"x = {x}")
-
-    f_x = f(x)
-    print(f"f = {f_x:.6f}")
+    main()

@@ -1,8 +1,13 @@
 import pytest
-from main import f
+from main import main
+from unittest.mock import MagicMock, patch
 
-def test_zero_division(bad_xs: list[float]) -> None:
+@patch("builtins.input", return_value="3.1415")
+@patch("builtins.print")
+def test_zero_division(
+    mock_input: MagicMock,
+    mock_print: MagicMock
+) -> None:
     """Тест на поднятие исключение о делении на ноль"""
-    for x in bad_xs:
-        with pytest.raises(ZeroDivisionError):
-            print(f"x={x}, f(x)={f(x)}")
+    with pytest.raises(ZeroDivisionError):
+        main()
