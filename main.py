@@ -21,7 +21,7 @@ def f(x: float) -> float:
         ZeroDivisionError: если подать значение не из области определения.
     """
 
-    if -eps < sin(2 * x) < eps:
+    if abs(sin(2 * x)) < eps:
         raise ZeroDivisionError()
 
     return (sin(x) + cos(2 * x))**2 / (sin(2 * x))
