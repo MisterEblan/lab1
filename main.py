@@ -5,7 +5,7 @@ eps: float = 1e-2
 def main():
     x = float(input("Ввод >> "))
     if abs(denominator := sin(2 * x)) < eps:
-        raise ZeroDivisionError
+        raise ZeroDivisionError("Знаменатель близок к нулю!")
 
     enumerator = ( sin(x) + cos(x * 2) )**2
 
