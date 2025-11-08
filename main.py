@@ -1,42 +1,33 @@
 from math import sin, cos
 
-eps: float = 1e-2
+calculate = lambda x: (
+    ((sin(x) + cos(2 * x)** 2) / sin(2 * x))
+    if abs(sin(2*x)) > 1e-2
+    else "Знаменатель близок к нулю!"
+)
+"""Функция для вычисления значений"""
 
-def f(x: float) -> float:
-    """
-    Вычисляет значение выражения
-    $$ \\frac{(\\sin(x) + \\cos (2x) )^2}{\\sin(2x)} $$
+get_input = lambda: float(input("Ввод: >>> "))
 
-    Область определения:
-        Вся вещественная прямая, кроме точек
-        $\\frac{\\pi n}{2}, n \\in \\mathbb{N}$.
+def print_result(x: float) -> None:
+    """Вывод результата вычислений
 
     Args:
         x: значение аргумента.
 
     Returns:
-        Вычисленное значение.
-
-    Raises:
-        ZeroDivisionError: если подать значение не из области определения.
+        только создаёт побочный эффект в виде вывода на экран
+        результата вычислений или сообщения об ошибке.
     """
-
-    if abs(denominator := sin(2 * x)) < eps:
-        raise ZeroDivisionError("Знаменатель близок к нулю!")
-
-    enumerator = ( sin(x) + cos(x * 2) )**2
-
-    f_x = enumerator / denominator
-
-    return f_x
-
-def main():
-    x = float(input("Ввод >> "))
-
-    result = f(x)
+    result = calculate(x)
 
     print(f"x={x}")
-    print(f"f={result:.6}")
 
-if __name__ == "__main__":
-    main()
+    if isinstance(result, float):
+        print(f"f={result:.6}")
+    else:
+        print(result)
+
+run = lambda: print_result((get_input()))
+
+run()
