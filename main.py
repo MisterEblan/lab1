@@ -34,7 +34,7 @@ def main():
     result = f(x)
 
     print(f"x={x}")
-    print(f"f={result:.6}")
+    print(f"f={result:.3}")
 
 if __name__ == "__main__":
     main()
