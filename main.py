@@ -21,7 +21,7 @@ def f(x: float) -> float:
         ZeroDivisionError: если подать значение не из области определения.
     """
 
-    if x == BAD_X:
+    if x == BAD_X or ((x + 3) / (x - 3)) < 0:
         raise ZeroDivisionError(f"Функция не определена в точке {x}")
 
     f_x = sin(x) * sqrt( (x + 3) / (x - 3) )
