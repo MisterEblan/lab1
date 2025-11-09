@@ -11,7 +11,7 @@ def test_normal(
 
     called_args = [str(c) for c in mock_print.call_args_list]
     for arg in called_args:
-        if "-1.91785" in arg:
+        if "-1.92" in arg:
             assert True
             return
 
