@@ -5,7 +5,7 @@ BAD_X = 3
 
 calculate = lambda x: (
     (sin(x) * sqrt( (x+3) / (x-3) ))
-    if x != BAD_X
+    if x != BAD_X or (x + 3) / (x - 3) < 0
     else f"Функция не определена в точке {x}"
 )
 """Функция для вычисления значений"""
