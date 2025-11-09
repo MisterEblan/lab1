@@ -1,15 +1,15 @@
-from math import sin, cos
+from math import sin, sqrt
 
-eps: float = 1e-2
+# Значение аргумента, при котором функция не определена
+BAD_X = 3
 
 def f(x: float) -> float:
     """
     Вычисляет значение выражения
-    $$ \\frac{(\\sin(x) + \\cos (2x) )^2}{\\sin(2x)} $$
+    $$ \\sin (x) \\sqrt{ \\frac{x + 3}{x - 3} } $$
 
     Область определения:
-        Вся вещественная прямая, кроме точек
-        $\\frac{\\pi n}{2}, n \\in \\mathbb{N}$.
+        Вся вещественная прямая, кроме точки $x=3$.
 
     Args:
         x: значение аргумента.
@@ -21,12 +21,10 @@ def f(x: float) -> float:
         ZeroDivisionError: если подать значение не из области определения.
     """
 
-    if abs(denominator := sin(2 * x)) < eps:
-        raise ZeroDivisionError("Знаменатель близок к нулю!")
+    if x == BAD_X:
+        raise ZeroDivisionError(f"Функция не определена в точке {x}")
 
-    enumerator = ( sin(x) + cos(x * 2) )**2
-
-    f_x = enumerator / denominator
+    f_x = sin(x) * sqrt( (x + 3) / (x - 3) )
 
     return f_x
 

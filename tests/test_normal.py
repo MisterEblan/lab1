@@ -2,7 +2,7 @@ from main import main
 from unittest.mock import MagicMock, patch
 
 @patch("builtins.print")
-@patch("builtins.input", return_value="1.04719")
+@patch("builtins.input", return_value="5")
 def test_normal(
     mock_input: MagicMock,
     mock_print: MagicMock
