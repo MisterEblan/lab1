@@ -1,10 +1,8 @@
 from main import main
 from unittest.mock import MagicMock, patch
 
-eps = 1e-5
-
-@patch("builtins.input", return_value="1.04719")
 @patch("builtins.print")
+@patch("builtins.input", return_value="1.04719")
 def test_normal(
     mock_input: MagicMock,
     mock_print: MagicMock
