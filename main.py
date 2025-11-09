@@ -1,9 +1,12 @@
-from math import sin, cos
+from math import sin, sqrt
+
+# Значение аргумента, при котором функция не определена
+BAD_X = 3
 
 calculate = lambda x: (
-    ((sin(x) + cos(2 * x)** 2) / sin(2 * x))
-    if abs(sin(2*x)) > 1e-2
-    else "Знаменатель близок к нулю!"
+    (sin(x) * sqrt( (x+3) / (x-3) ))
+    if x != BAD_X
+    else f"Функция не определена в точке {x}"
 )
 """Функция для вычисления значений"""
 
@@ -24,7 +27,7 @@ def print_result(x: float) -> None:
     print(f"x={x}")
 
     if isinstance(result, float):
-        print(f"f={result:.6}")
+        print(f"f={result:.3}")
     else:
         print(result)
 
