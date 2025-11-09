@@ -11,7 +11,7 @@ def main():
     f_x = sin(x) * sqrt( (x+3) / (x-3) )
 
     print(f"x={x}")
-    print(f"f={f_x:.6}")
+    print(f"f={f_x:.3}")
 
 if __name__ == "__main__":
     main()
