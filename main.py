@@ -1,15 +1,14 @@
-from math import sin, cos
+from math import sin, sqrt
 
-eps: float = 1e-2
+# Значение аргумента, при котором знаменатель обнуляется
+BAD_X: float = 3.0
 
 def main():
     x = float(input("Ввод >> "))
-    if abs(denominator := sin(2 * x)) < eps:
-        raise ZeroDivisionError("Знаменатель близок к нулю!")
+    if x == BAD_X:
+        raise ZeroDivisionError(f"Функция не определена в точке {BAD_X}")
 
-    enumerator = ( sin(x) + cos(x * 2) )**2
-
-    f_x = enumerator / denominator
+    f_x = sin(x) * sqrt( (x+3) / (x-3) )
 
     print(f"x={x}")
     print(f"f={f_x:.6}")

@@ -1,16 +1,18 @@
 from main import main
 from unittest.mock import MagicMock, patch
 
-eps = 1e-5
-
-@patch("builtins.input", return_value="1.04719")
 @patch("builtins.print")
+@patch("builtins.input", return_value="5")
 def test_normal(
     mock_input: MagicMock,
     mock_print: MagicMock
 ) -> None:
     main()
 
-    called_args = [c for c in mock_print.call_args_list]
-    assert ("f=" in arg for arg in called_args)
-    assert ("x=1.04719" in arg for arg in called_args)
+    called_args = [str(c) for c in mock_print.call_args_list]
+    for arg in called_args:
+        if "-1.91785" in arg:
+            assert True
+            return
+
+    assert False, "Ожидалось, что будет вычислено значение функции в точке 5"
