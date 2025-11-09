@@ -5,7 +5,7 @@ BAD_X: float = 3.0
 
 def main():
     x = float(input("Ввод >> "))
-    if x == BAD_X:
+    if x == BAD_X or ((x + 3) / (x - 3)) < 0:
         raise ZeroDivisionError(f"Функция не определена в точке {BAD_X}")
 
     f_x = sin(x) * sqrt( (x+3) / (x-3) )
